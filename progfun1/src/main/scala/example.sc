@@ -1,5 +1,19 @@
 "Hello World!"
 
+
+def sum(f: Int => Int)(a: Int, b: Int): Int = {
+  @annotation.tailrec
+  def loop(a: Int, acc: Int): Int = {
+    if (a > b ) acc
+    else loop(a+1, acc+f(a))
+  }
+  loop(a, 0)
+}
+
+sum((x) => x*x*x)(1,2)
+
+
+
 def sum(xs: List[Int]): Int = {
   if(xs.isEmpty) return 0;
 
@@ -10,7 +24,7 @@ sum(List(1, 1, 2));
 
 def max(xs: List[Int]): Int = {
   if( xs.isEmpty ) return 0;
-
+  @annotation.tailrec
   def max1(x: Int, xs1: List[Int]) : Int = {
     if( xs1.isEmpty ) return x;
     if( x > xs1.head) {
